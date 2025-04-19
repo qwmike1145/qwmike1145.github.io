@@ -271,15 +271,15 @@ div[class*=class] ul li span[class$="}"] + .default {
 :is(.class-a, .class-A).top-box .bottom-text p {
     display: none;
 }
-:is(.sd-container[class*="{"], .lang-cn) :is(.class-deadzone, .class-死区, .class-死區).top-box .bottom-text::after {
+:is(.sd-container[class*="{"], .lang-cn) :is(.class-a, .class-A).top-box .bottom-text::after {
     content: "等级 A";
 }
 .lang-tr :is(.class-a, .class-A).top-box .bottom-text::after {
     content: "等級 A";
 }
 :is(.class-a, .class-A) .header-diamond .diamond-image {
-    -webkit-mask: var(--img-A) center/80% no-repeat;
-            mask: var(--img-A) center/80% no-repeat;
+    -webkit-mask: var(--img-a) center/80% no-repeat;
+            mask: var(--img-a) center/80% no-repeat;
 }
 :is(.sd-container[class*="{"], .lang-cn, .lang-tr) :is(.class-a, .class-A).bottom-box ul li:nth-child(1) > .default::after {
     content: "不安全";
