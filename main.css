@@ -197,7 +197,7 @@ div[class*=class] ul li span[class$="}"] + .default {
     background-color: rgb(var(--class-oasis));
 }
 :is(.class-oasis, .class-绿洲, .class-綠洲).top-box, :is(.class-oasis, .class-绿洲, .class-綠洲) {
-    --sd-symbol: 255, 255, 255;
+    --sd-symbol: 256, 28, 4;
 }
 :is(.class-oasis, .class-绿洲, .class-綠洲).top-box .bottom-text p {
     display: none;
