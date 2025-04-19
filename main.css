@@ -8,6 +8,7 @@
     --sd-symbol-secondary: 255, 255, 255;
     --sd-bullets: var(--sd-border);
     --sd-text: var(--swatch-text-secondary-color);
+    --class-1: 255, 201, 14;
     --class-oasis: 192,192,192;
     --class-habitable: 26, 128, 111;
     --class-deadzone: 44, 13, 12;
@@ -207,17 +208,6 @@ div[class*=class] ul li span[class$="}"] + .default {
 }
 .lang-tr :is(.class-oasis, .class-绿洲, .class-綠洲).top-box .bottom-text::after {
     content: "等級 綠洲";
-}
-:is(.class-oasis, .class-绿洲, .class-綠洲).top-box::before,
-:is(.class-oasis, .class-绿洲, .class-綠洲).top-box .header-diamond .diamond-pattern {
-    opacity: 0.5;
-}
-:is(.class-oasis, .class-绿洲, .class-綠洲).top-box .gradient-box {
-    background: none;
-}
-:is(.class-oasis, .class-绿洲, .class-綠洲).top-box .header-diamond {
-    -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
 }
 :is(.class-oasis, .class-绿洲, .class-綠洲).top-box .header-diamond .diamond-image {
     -webkit-mask: var(--img-oasis) center/80% no-repeat;
