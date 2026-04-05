@@ -1,0 +1,29 @@
+{
+  "id": 8,
+  "significant": true,
+  "outdated": false,
+  "minVersion": -1,
+  "maxVersion": -1,
+  "specificLang": [],
+  "title": [
+    {
+      "lang": "en",
+      "text": "Regarding lag"
+    },
+    {
+      "lang": "zh_CN",
+      "text": "关于卡顿"
+    }
+  ],
+  "date": "2026.01.31",
+  "content": [
+    {
+      "lang": "en",
+      "text": "If you find the game laggy while playing, you can download the MG Renderer (already built into versions 1.13.2 and above) or turn off some mods. For detailed instructions, see the group files.QQ Group number: 310398180. Official website: https://qwmike1145.github.io"
+    },
+    {
+      "lang": "zh_CN",
+      "text": "如果你们玩这个游戏时觉得卡可以下载MG渲染器（1.13.2以上版本已内置）或关掉一些模组，详细教程见群文件。\nQQ群号：310398180\n官网：https://qwmike1145.github.io"
+    }
+  ]
+}
