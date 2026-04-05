@@ -1,7 +1,7 @@
 [
   {
     "type": "release", #release beta
-    "versionCode": 1140,
+    "versionCode": 1141,
     "versionName": "1.14.0",
     "date": "2026.04.05",
     "description": [
