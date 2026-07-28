@@ -1,17 +1,17 @@
 [
   {
-    "type": "beta", #release beta
-    "versionCode": 1150,
-    "versionName": "1.15.0.1",
-    "date": "2026.07.26",
+    "type": "release", #release beta
+    "versionCode": 1151,
+    "versionName": "1.15.1",
+    "date": "2026.07.28",
     "description": [
       {
-        "lang": "en",
-        "text": "(Note: This update may clear all your game data. Please back up all your data before updating.)\nFixed the bug that prevented the game from starting normally.\nExtraction code: 9178"
+        "lang": "en", 
+        "text": "(Note: This update may clear all your game data. Please back up all your data before updating.)\nAdded.Jenny Dweller.\nUpdated some mod components.\nExtraction code: 9178"
       },
       {
         "lang": "zh_CN",
-        "text": "(注意: 本次更新可能会清除你游戏所有数据，请在更新前备份好你所有数据。)\n修复无法正常启动游戏的bug。\n提取码：9178"
+        "text": "(注意: 本次更新可能会清除你游戏所有数据，请在更新前备份好你所有数据。)\n新增珍妮居民。\n更新部分模组。\n提取码：9178"
       }
     ],
     "netdiskUrl": "https://1829415183.share.123pan.cn/123pan/2Pdcjv-689u3",
