@@ -1,20 +1,20 @@
 [
   {
     "type": "release", #release beta
-    "versionCode": 1151,
-    "versionName": "1.15.1",
-    "date": "2026.07.28",
+    "versionCode": 1160,
+    "versionName": "1.16.0",
+    "date": "2026.08.13",
     "description": [
       {
         "lang": "en", 
-        "text": "(Note: This update may clear all your game data. Please back up all your data before updating.)\nAdded.Jenny Dweller.\nUpdated some mod components.\nExtraction code: 9178"
+        "text": "(Note: This update may clear all your game data. Please back up all your data before updating.)\nReplace Slenderman, Traveler's Backpack, and other mods.\nUpdate all mod.\nExtraction code: 9178\n(Note: Versions 1.15.0+ cannot be updated. A fix is coming soon.)"
       },
       {
         "lang": "zh_CN",
-        "text": "(注意: 本次更新可能会清除你游戏所有数据，请在更新前备份好你所有数据。)\n新增珍妮居民。\n更新部分模组。\n提取码：9178"
+        "text": "(注意: 本次更新可能会清除你游戏所有数据，请在更新前备份好你所有数据。)\n更新亮色模式、暗色模式壁纸\n替换瘦长鬼影，旅行背包等模组。\n更新所有模组。\n提取码：9178\n(注意: 1.15.0及以上版本无法更新，我们将尽快修复这个bug)"
       }
     ],
-    "netdiskUrl": "https://1829415183.share.123pan.cn/123pan/2Pdcjv-689u3",
+    "netdiskUrl": "https://1829415183.share.123pan.cn/123pan/2Pdcjv-tzzU3",
     "url": "https://789113.com/91vip.html"
   }
 ]
