@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件加解密</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, sans-serif; background: #f0f2f5; padding: 16px; }
+    .container { max-width: 500px; margin: 0 auto; }
+    .card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .title { text-align: center; font-size: 20px; font-weight: 700; }
+    .mode-row { display: flex; gap: 10px; margin: 12px 0; }
+    .mode-btn { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; background: #fff; font-size: 16px; font-weight: 600; cursor: pointer; text-align: center; }
+    .mode-btn.active-e { border-color: #2563eb; background: #dbeafe; color: #2563eb; }
+    .mode-btn.active-d { border-color: #16a34a; background: #dcfce7; color: #16a34a; }
+    .upload-area { border: 2px dashed #ccc; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 12px; background: #fafafa; }
+    .btn { display: block; width: 100%; padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-bottom: 8px; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-folder { background: #7c3aed; color: #fff; }
+    .btn-success { background: #16a34a; color: #fff; }
+    .btn:active { transform: scale(0.97); }
+    .file-item { padding: 6px 10px; background: #f5f5f5; border-radius: 4px; margin-bottom: 3px; font-size: 13px; display: flex; justify-content: space-between; }
+    .file-list { max-height: 200px; overflow-y: auto; margin: 10px 0; }
+    .progress-bar { height: 6px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin: 10px 0; }
+    .progress-fill { height: 100%; background: #2563eb; width: 0%; transition: width 0.3s; }
+    .result-item { padding: 10px; border-radius: 6px; margin-bottom: 6px; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .result-ok { background: #dcfce7; }
+    .result-err { background: #fee2e2; }
+    .dbtn { padding: 4px 12px; background: #2563eb; color: #fff; border: none; border-radius: 4px; font-size: 13px; cursor: pointer; }
+    .hidden { display: none !important; }
+    .text-center { text-align: center; }
+    .text-sm { font-size: 13px; color: #666; }
+    .mt-8 { margin-top: 8px; }
+    .mt-12 { margin-top: 12px; }
+    .badge { padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    .badge-e { background: #dbeafe; color: #2563eb; }
+    .badge-d { background: #dcfce7; color: #16a34a; }
+    .footer { text-align: center; font-size: 12px; color: #999; padding: 16px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;">
+    <div class="title">🔐 文件加解密</div>
+    <div class="text-center text-sm" style="opacity:0.7;">支持选择文件夹 · Edge 手机版</div>
+  </div>
+
+  <div class="card">
+    <div class="mode-row">
+      <button id="mE" class="mode-btn active-e">🔒 加密</button>
+      <button id="mD" class="mode-btn">🔓 解密</button>
+    </div>
+    <div id="hint" class="text-center text-sm" style="margin-bottom:10px;">当前：<span class="badge badge-e">加密</span></div>
+
+    <div class="upload-area">
+      <div style="font-size:36px;">📂</div>
+      <div style="color:#888;font-size:14px;">点击下方按钮选择</div>
+    </div>
+
+    <!-- 关键：这两个 input 分开，互不干扰 -->
+    <input type="file" id="inputFile" multiple style="display:none">
+    <input type="file" id="inputFolder" webkitdirectory multiple style="display:none">
+
+    <button id="btnFile" class="btn btn-primary">📄 选择文件（可多选）</button>
+    <button id="btnFolder" class="btn btn-folder">📁 选择文件夹</button>
+
+    <div id="listArea" class="file-list hidden"></div>
+
+    <button id="btnProcess" class="btn btn-success mt-8" disabled>🚀 开始处理</button>
+
+    <div id="progressArea" class="hidden mt-8">
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <div id="progressText" class="text-center text-sm">0%</div>
+    </div>
+  </div>
+
+  <div id="resultCard" class="card hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <strong>📋 结果</strong>
+      <button id="btnZip" class="dbtn" style="background:#16a34a;padding:6px 14px;">⬇️ 全部打包</button>
+    </div>
+    <div id="resultList"></div>
+  </div>
+
+  <div class="footer">是史三问呀 · QQ:2196634956</div>
+</div>
+
+<script>
+// ===== 核心加解密 =====
+const KEY = new Uint8Array([214,2,8,0,244,254,255,63,1,0,0,0,208,202,1,0]);
+
+async function xorData(data) {
+  const input = new Uint8Array(data);
+  const out = new Uint8Array(input.length);
+  for (let i = 0; i < input.length; i++) out[i] = input[i] ^ KEY[i % KEY.length];
+  return out.buffer;
+}
+
+async function processFile(file, mode) {
+  const buf = await file.arrayBuffer();
+  let result;
+  if (mode === 'decrypt') {
+    const x = await xorData(buf.slice(8));
+    result = await new Response(new Blob([x]).stream().pipeThrough(new DecompressionStream('deflate'))).arrayBuffer();
+  } else {
+    const c = await new Response(new Blob([buf]).stream().pipeThrough(new CompressionStream('deflate'))).arrayBuffer();
+    const x = await xorData(c);
+    const out = new Uint8Array(8 + x.byteLength);
+    out.set(new Uint8Array(8));
+    out.set(new Uint8Array(x), 8);
+    result = out.buffer;
+  }
+  return new File([result], file.name, { type: file.type });
+}
+
+// ===== UI =====
+let mode = 'encrypt';
+let files = [];
+let results = [];
+let processing = false;
+
+const $ = id => document.getElementById(id);
+const mE = $('mE'), mD = $('mD'), hint = $('hint');
+const inputFile = $('inputFile'), inputFolder = $('inputFolder');
+const btnFile = $('btnFile'), btnFolder = $('btnFolder');
+const listArea = $('listArea'), btnProcess = $('btnProcess');
+const progressArea = $('progressArea'), progressFill = $('progressFill'), progressText = $('progressText');
+const resultCard = $('resultCard'), resultList = $('resultList'), btnZip = $('btnZip');
+
+function setMode(m) {
+  mode = m;
+  mE.className = `mode-btn${m==='encrypt'?' active-e':''}`;
+  mD.className = `mode-btn${m==='decrypt'?' active-d':''}`;
+  const label = m==='encrypt'?'加密':'解密';
+  const cls = m==='encrypt'?'badge-e':'badge-d';
+  hint.innerHTML = `当前：<span class="badge ${cls}">${label}</span>`;
+  clearResults();
+}
+mE.onclick = ()=>setMode('encrypt');
+mD.onclick = ()=>setMode('decrypt');
+
+btnFile.onclick = ()=>inputFile.click();
+btnFolder.onclick = ()=>inputFolder.click();
+
+function handleFiles(fileList) {
+  const valid = [];
+  for (const f of fileList) {
+    if (f.size > 100*1024*1024) { alert(`"${f.name}" 超过100MB`); continue; }
+    valid.push(f);
+  }
+  if (!valid.length) return;
+  files = files.concat(valid);
+  renderList();
+  btnProcess.disabled = false;
+}
+
+inputFile.onchange = (e)=>{
+  if (e.target.files.length) handleFiles(e.target.files);
+  e.target.value = '';
+};
+
+inputFolder.onchange = (e)=>{
+  if (e.target.files.length) {
+    // 显示文件夹名称
+    const first = e.target.files[0];
+    if (first && first.webkitRelativePath) {
+      const name = first.webkitRelativePath.split('/')[0];
+      // 在按钮上显示反馈
+      btnFolder.textContent = `📁 ${name} (${e.target.files.length}个文件)`;
+      setTimeout(()=>{ btnFolder.textContent = '📁 选择文件夹'; }, 3000);
+    }
+    handleFiles(e.target.files);
+  }
+  e.target.value = '';
+};
+
+function renderList() {
+  if (!files.length) { listArea.classList.add('hidden'); return; }
+  listArea.classList.remove('hidden');
+  let html = '';
+  let total = 0;
+  for (const f of files) {
+    total += f.size;
+    const name = f.webkitRelativePath || f.name;
+    html += `<div class="file-item"><span>${name}</span><span>${(f.size/1024).toFixed(1)}KB</span></div>`;
+  }
+  html += `<div class="file-item" style="background:transparent;font-weight:600;">共 ${files.length} 个文件 ｜ ${(total/1024/1024).toFixed(2)}MB</div>`;
+  listArea.innerHTML = html;
+}
+
+function clearResults() {
+  results = [];
+  resultCard.classList.add('hidden');
+}
+
+btnProcess.onclick = async ()=>{
+  if (processing || !files.length) return;
+  const total = files.reduce((s,f)=>s+f.size,0);
+  if (total > 500*1024*1024) { alert('总大小超过500MB'); return; }
+
+  processing = true;
+  btnProcess.disabled = true;
+  btnProcess.textContent = '⏳ 处理中...';
+  progressArea.classList.remove('hidden');
+  resultCard.classList.add('hidden');
+  results = [];
+
+  for (let i = 0; i < files.length; i++) {
+    const f = files[i];
+    const pct = ((i+1)/files.length*100);
+    progressFill.style.width = pct+'%';
+    progressText.textContent = `${pct.toFixed(0)}% (${i+1}/${files.length})`;
+    try {
+      const r = await processFile(f, mode);
+      results.push({ original: f, processed: r, status: 'ok', error: null });
+    } catch (e) {
+      results.push({ original: f, processed: null, status: 'err', error: e.message });
+    }
+  }
+
+  renderResults();
+  progressFill.style.width = '100%';
+  progressText.textContent = '✅ 完成';
+  processing = false;
+  btnProcess.disabled = false;
+  btnProcess.textContent = '🚀 开始处理';
+};
+
+function renderResults() {
+  resultCard.classList.remove('hidden');
+  let html = '';
+  let okCount = 0;
+  for (const r of results) {
+    if (r.status === 'ok') okCount++;
+    const cls = r.status === 'ok' ? 'result-ok' : 'result-err';
+    const name = r.original.webkitRelativePath || r.original.name;
+    const err = r.error ? ` <span style="color:#dc2626;font-size:12px;">-${r.error}</span>` : '';
+    const btn = r.status === 'ok' && r.processed
+      ? `<button class="dbtn" onclick="downloadOne('${encodeURIComponent(r.original.name)}')">下载</button>`
+      : '';
+    html += `<div class="result-item ${cls}">
+      <span style="word-break:break-all;flex:1;margin-right:8px;">${name}${err}</span>
+      <span style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <span style="font-size:12px;font-weight:600;">${r.status==='ok'?'✅':'❌'}</span>
+        ${btn}
+      </span>
+    </div>`;
+  }
+  window._res = results;
+  resultList.innerHTML = html;
+  btnZip.style.display = okCount > 1 ? 'inline-block' : 'none';
+}
+
+window.downloadOne = function(name) {
+  const r = window._res.find(x => x.original.name === decodeURIComponent(name));
+  if (!r || !r.processed) return;
+  const url = URL.createObjectURL(r.processed);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = r.processed.name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 5000);
+};
+
+btnZip.onclick = async ()=>{
+  const ok = window._res.filter(r => r.status==='ok' && r.processed);
+  if (!ok.length) { alert('没有可下载的文件'); return; }
+  try {
+    const JSZip = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js').then(m=>m.default);
+    const zip = new JSZip();
+    for (const r of ok) {
+      const data = await r.processed.arrayBuffer();
+      zip.file(r.processed.name, data);
+    }
+    const blob = await zip.generateAsync({ type: 'blob' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `解密文件_${Date.now()}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 5000);
+  } catch(e) { alert('打包失败: '+e.message); }
+};
+
+setMode('encrypt');
+</script>
+</body>
+</html>
