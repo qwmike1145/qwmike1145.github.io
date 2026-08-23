@@ -8,22 +8,22 @@
   "title": [
     {
       "lang": "en",
-      "text": "About version 1.15.0"
+      "text": "About version 1.17.0"
     },
     {
       "lang": "zh_CN",
-      "text": "关于1.15.0"
+      "text": "关于1.17.0"
     }
   ],
-  "date": "2026.07.26",
+  "date": "2026.08.23",
   "content": [
     {
       "lang": "en",
       "text": "If you are unable to start Minecraft normally while playing the TMFTF modpack, please download version 1.15.0.1 immediately. Download link: https://1829415183.share.123pan.cn/123pan/2Pdcjv-689u3\nQQ Group: 310398180\nOfficial website: https://qwmike1145.github.io"
     },
     {
-      "lang": "zh_CN",
-      "text": "如果你们在游玩TMFTF整合包时无法正常启动Minecraft,请立即下载1.15.0.1版本，下载链接: https://1829415183.share.123pan.cn/123pan/2Pdcjv-689u3\nQQ群号：310398180\n官网：https://qwmike1145.github.io"
+      "lang": "zh_CN",打开
+      "text": "如果你们在游玩TMFTF整合包时无法正常启动Minecraft,请打开模组管理并删掉CustomSkinLoader模组。\nQQ群号：310398180\n官网：https://qwmike1145.github.io"
     }
   ]
 }
