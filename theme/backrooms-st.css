@@ -1,0 +1,20 @@
+@import url("https://github.backroomswiki.cn/Old_BHL/css/liminal.css");
+@import url(https://github.backroomswiki.cn/Old_BHL/css/sidebar.css);
+
+:root {
+   --logo-image: url("https://pic1.imgdb.cn/item/67dda02d88c538a9b5c32205.png");
+   --header-title: "The Backrooms ST";
+   --header-subtitle: "你曾经来过这里";
+}
+
+#edit-page-textarea, .code pre, .code p, .code, tt, .page-source {
+    font-family: var(--mono-font);
+}
+ 
+.code pre * {
+    white-space: pre;
+}
+ 
+.code *, .pre * {
+    font-feature-settings: unset;
+}
