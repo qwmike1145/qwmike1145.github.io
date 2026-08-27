@@ -1,0 +1,153 @@
+@import url("https://github.backroomswiki.cn/Old_BHL/css/liminal.css");
+@import url(https://github.backroomswiki.cn/Old_BHL/css/sidebar.css);
+
+:root {
+   --logo-image: url("https://uf-backrooms.wikidot.com/local--files/start/LOGO");
+   --header-title: "The Backrooms UF";
+   --header-subtitle: "我们的归属？";
+}
+
+#edit-page-textarea, .code pre, .code p, .code, tt, .page-source {
+    font-family: var(--mono-font);
+}
+ 
+.code pre * {
+    white-space: pre;
+}
+ 
+.code *, .pre * {
+    font-feature-settings: unset;
+}
+
+#main-content .page-tags {
+    border: 2.5px solid rgb(var(--pale-accent));
+    border-radius: 11px 5px 5px 11px;
+    padding: 5px;
+    display: flex;
+    align-items: stretch;
+}
+
+.page-tags::before {
+    content: "标签";
+    font-size: 80%;
+    font-weight: bold;
+    background-color: rgb(var(--medium-accent));
+    background-color: rgb(var(--medium-accent));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1px 6px;
+    color: rgb(var(--white-monochrome));
+    margin-right: 0.3em;
+    border-radius: 9px 3px 3px 9px;
+}
+
+#main-content .page-tags span a {
+    transition: 0.3s,text-decoration-color 0s;
+    padding: 0px 4px;
+}
+
+
+#main-content .page-tags a {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.page-tags a {
+    margin: 0 3px;
+}
+
+
+#edit-button, #pagerate-button, #tags-button, #discuss-button, #history-button, #files-button, #print-button, #site-tools-button, #more-options-button {
+  -webkit-transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -o-transition: color .2s ease, background-color .2s ease, -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -moz-transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -moz-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease;
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99), -moz-transform .2s cubic-bezier(0,-0.02,.47,.99), -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+}
+
+#edit-button:hover, #pagerate-button:hover, #tags-button:hover, #discuss-button:hover, #history-button:hover, #files-button:hover, #print-button:hover, #site-tools-button:hover, #more-options-button:hover {
+  -webkit-transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -o-transition: color .2s ease, background-color .2s ease, -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -moz-transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -moz-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease;
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99), -moz-transform .2s cubic-bezier(0,-0.02,.47,.99), -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transform: scale(1.1, 1.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+
+
+
+#edit-sections-button, #edit-append-button, #edit-meta-button, #watchers-button, #backlinks-button, #view-source-button, #parent-page-button, #page-block-button, #rename-move-button, #delete-button {
+  -webkit-transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -o-transition: color .2s ease, background-color .2s ease, -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -moz-transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -moz-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease;
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99), -moz-transform .2s cubic-bezier(0,-0.02,.47,.99), -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+}
+
+#edit-sections-button:hover, #edit-append-button:hover, #edit-meta-button:hover, #watchers-button:hover, #backlinks-button:hover, #view-source-button:hover, #parent-page-button:hover, #page-block-button:hover, #rename-move-button:hover, #delete-button:hover {
+  -webkit-transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -o-transition: color .2s ease, background-color .2s ease, -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  -moz-transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -moz-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease;
+  transition: transform .2s cubic-bezier(0,-0.02,.47,.99), color .2s ease, background-color .2s ease, -webkit-transform .2s cubic-bezier(0,-0.02,.47,.99), -moz-transform .2s cubic-bezier(0,-0.02,.47,.99), -o-transform .2s cubic-bezier(0,-0.02,.47,.99);
+  transform: scale(1.1, 1.1);
+  border-radius: 5px 5px 5px 5px;
+}
+/* 站长专属 */
+.printuser a[href*="http://www.wikidot.com/user:info/jiliangjiyin"] {
+background: linear-gradient(90deg,#EE82EE 20%,#00D1FF 100%);  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 网站管理员 */
+.printuser
+a[href*="http://www.wikidot.com/user:info/laimu-slime"],.printuser
+a[href*="http://www.wikidot.com/user:info/jiaoyanerlan2"],.printuser
+a[href*="http://www.wikidot.com/user:info/junziguxianglai-a"],.printuser 
+a[href*="http://www.wikidot.com/user:info/qwmike1145"] {
+    background: linear-gradient(90deg,#F83600 0%,#F9D423 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 版主 */
+.printuser
+a[href*="http://www.wikidot.com/user:info/starry-milky-way"],.printuser
+a[href*="http://www.wikidot.com/user:info/spocpa619"] {
+    background: linear-gradient(90deg,#3F00FF 0%,#C426EC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Mast */
+.printuser
+a[href*="http://www.wikidot.com/user:info/暂无用户"] {
+background-image: linear-gradient(-225deg, #15BFF0 0%, #1D8FE1 48%, #625EB1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 离职职员 */
+.printuser a[href*="http://www.wikidot.com/user:info/暂无用户"] ｛
+background: linear-gradient(120deg,#FF4C4C 22.75%,#FFBABA 100%);  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 不活跃职员 */
+.printuser a[href*="http://www.wikidot.com/user:info/暂无用户名"] {
+background: linear-gradient(90deg,#c0c0c0 20%,#625b57 100%);  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
