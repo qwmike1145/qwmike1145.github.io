@@ -1,0 +1,8 @@
+@import url("https://github.backroomswiki.cn/Old_BHL/css/liminal-impact.css");
+@import url(https://github.backroomswiki.cn/Old_BHL/css/sidebar.css);
+
+:root {
+   --logo-image: url("http://backrooms-ac.wikidot.com/local--files/start/Logo-White");
+   --header-title: "The Backrooms AC";
+   --header-subtitle: "你曾经来过这里";
+}
