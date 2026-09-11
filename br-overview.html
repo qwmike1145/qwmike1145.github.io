@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>总览列表生成器</title>
+    <style>
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        #container > * {
+            margin: 5px;
+        }
+        .hw, .page-source {
+            background-color: #f4f4f4;
+            padding: 1em;
+            border: 1px dashed #DDD;
+            background-color: rgb(237,237,233);
+            font-family: 'Andale Mono', 'Courier New', Courier, monospace;
+            padding: 0 1em;
+            margin: 0.4em 0;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <input type="text" id="level" value="Level" size="5"/>   <input type="text" id="dv" value="编号" size="2"/>-<input type="text" value="1" id="num1" size="2" />   -   <input type="text" value="[数据缺失]" id="nodata" size="8" /> <br>
+            至 <input type="text" id="num2" value="50" min="1" size="2" />
+        </div>
+        <button onclick="generateCode()">生成</button>
+    </div>
+    <pre class="hw" style="white-space: pre-wrap;"></pre>
+
+    <script>
+        let hw = '';
+
+        function generateCode() {
+            var level = document.getElementById("level").value;
+            var dv = document.getElementById("dv").value;
+            var num1 = document.getElementById("num1").value;
+            var nodata = document.getElementById("nodata").value;
+
+            var num2 = document.getElementById('num2').value - num1 + 1;
+
+            hw = '';
+
+            for (let i = 1; i <= num2; i++) {
+                hw += `* [[[${level} ${dv}-${num1}]]] - ${nodata}\n`;
+                num1 ++;
+            }
+            document.querySelector('.hw').innerText = hw;
+
+           
+            if (document.getElementById('copyButton') === null) {
+                const copyButton = document.createElement('button');
+                copyButton.id = 'copyButton';
+                copyButton.textContent = '点击复制';
+                copyButton.onclick = copyHW;
+                document.body.insertBefore(copyButton, document.querySelector('.hw'));
+            }
+        }
+
+        function copyHW() {
+            if(execCopy(hw)){
+            }else {
+                alert('复制失败！');
+            }
+        }
+
+        function execCopy(string){
+            var temp = document.createElement('div');
+            temp.appendChild(document.createElement('pre')).textContent = string;
+            var s = temp.style;
+            s.position = 'fixed';
+            s.left = '-100%';
+            document.body.appendChild(temp);
+            document.getSelection().selectAllChildren(temp);
+            var result = document.execCommand('copy');
+            document.body.removeChild(temp);
+            return result;
+        }
+    </script>
+</body>
+</html>
