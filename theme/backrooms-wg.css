@@ -2,6 +2,6 @@
 
 :root {
    --logo-image: url("https://wg-backrooms-wiki-cn.wikidot.com/local--files/start/logo.png");
-   --header-title: "The Backrooms WG"
-   --header-subtitle: "杀出重围"
+   --header-title: "The Backrooms WG";
+   --header-subtitle: "杀出重围";
 }
