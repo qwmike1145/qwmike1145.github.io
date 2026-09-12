@@ -1,47 +1,85 @@
-@import url("https://github.backroomswiki.cn/Old_BHL/css/liminal-impact.css");
+@import url(https://github.backroomswiki.cn/Super_Liminal/css/super-liminal.css);
+@import url(https://github.backroomswiki.cn/Super_Liminal/css/basic-styles.css);
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+.dropshadow {
+    filter: drop-shadow(9999rem 0 0 rgba(var(--accent-color)));
+    position: relative;
+    transform: translateX(-9999rem);
+    margin-top: 0.5rem;
+    opacity: 0.85;
+}
+.introfont {
+    font-size: min(calc((100vw - 2rem) / 5.5), 1.7rem);
+    display: flex;
+    justify-content: space-between;
+    max-width: 30rem;
+    color: rgba(var(--text-color));
+    font-weight: 900;
+    margin: 1rem auto 2rem;
+    padding: 0 1rem;
+    border-bottom: rgba(var(--dark-color-3)) solid 0.2rem;
+    box-sizing: border-box;
+}
+.theme-setting-preview img {
+    float: left;
+    width: 50%;
+    margin: 1rem 1rem 1rem 0;
+    min-width: 25rem;
+    box-sizing: border-box;
+    border: rgba(var(--dark-color-3)) solid 0.15rem;
+}
+@media only screen and (max-width: 720px) {
+    .theme-setting-preview img {
+        float: none;
+        margin: 1rem 0 0;
+        width: 100%;
+        min-width: unset;
+    }
+}
+
 :root {
     --header-font: Orbitron, Inter, "Noto Sans SC", "Noto Sans TC", Franklin Gothic Medium, Franklin Gothic, ITC Franklin Gothic, Arial, sans-serif;
     --title-font: Lexend, Inter, "Noto Sans SC", "Noto Sans TC", Franklin Gothic Medium, Franklin Gothic, ITC Franklin Gothic, Arial, sans-serif;
     --mono-font: "JetBrains Mono", "Noto Sans SC", "Noto Sans TC", Consolas, monaco, monospace;
- 
+
     --header-title-font-size: min(calc(1.6rem + 1.5vw), 3rem);
     --header-subtitle-font-size: min(calc(0.6rem + 0.45vw), 1rem);
     --header-title-font-size-on-mobile: var(--header-title-font-size);
     --header-subtitle-font-size-on-mobile: var(--header-subtitle-font-size);
     --sidebar-width: 16rem;
- 
+
     --logo-image: url("https://wg-cn.wikidot.com/local--files/start/WGlogo");
     --header-title: "The Backrooms WG";
     --header-subtitle: "杀出重围";
- 
+
     --white-color: 252, 252, 252;
     --black-color: 35, 35, 38;
     --accent-color: 24, 80, 187;
- 
+
     --background-color: var(--white-color);
     --text-color: var(--black-color);
- 
+
     --light-color-1: var(--white-color);
     --light-color-2: var(--white-color);
     --dark-color-1: var(--accent-color);
     --dark-color-2: var(--accent-color);
     --dark-color-3: var(--accent-color);
     --dark-color-4: var(--accent-color);
- 
+
     --neutral-color: 170, 170, 170;
- 
+
     --link-color: var(--accent-color);
     --hover-link-color: var(--link-color), 0.6;
     --visited-link-color: var(--link-color);
- 
+
     --selected-background-color: var(--general-dark-background-color);
     --selected-text-color: var(--general-dark-text-color);
- 
+
     --scrollbar-color: var(--accent-color);
     --scrollbar-background-color: var(--white-color);
- 
+
     --general-medium-background-color: var(--general-dark-background-color);
     --general-medium-text-color: var(--general-dark-text-color);
     --general-medium-border-color: var(--accent-color);
@@ -49,12 +87,12 @@
     --general-button-text-color: var(--accent-color);
     --general-button-background-color: var(--white-color);
     --general-blur: 0;
- 
+
     --header-background-bottom: var(--white-color);
     --header-background-top: var(--white-color);
     --header-extra-background-image: none;
     --header-text-color: var(--black-color);
- 
+
     --topbar-text-color: var(--accent-color);
     --topbar-hover-text-color: var(--general-dark-text-color);
     --topbar-hover-background-color: var(--general-dark-background-color);
@@ -66,22 +104,22 @@
     --topbar-drop-border-color: var(--accent-color);
     --topbar-drop-border-width: 0.15rem;
     --topbar-drop-shadow-color: 0, 0, 0, 0;
- 
+
     --account-button-text-color: var(--general-button-text-color);
     --account-button-background-color: var(--general-button-background-color);
     --account-button-hover-text-color: var(--general-hover-button-text-color);
     --account-button-hover-background-color: var(--general-hover-button-background-color);
     --account-drop-text-color: var(--accent-color);
- 
+
     --page-tag-text-color: var(--link-color);
     --page-tag-hover-text-color: var(--hover-link-color);
     --page-tag-background-color: 0, 0, 0, 0;
     --page-tag-hover-background-color: 0, 0, 0, 0;
- 
+
     --page-option-background-color: 0, 0, 0, 0;
- 
+
     --license-link-color: var(--link-color);
- 
+
     --sidebar-media-background-color: 0, 0, 0, 0;
     --sidebar-title-background-color: 0, 0, 0, 0;
     --sidebar-title-text-color: var(--black-color);
@@ -90,26 +128,26 @@
     --sidebar-hover-text-color: var(--general-dark-text-color);
     --sidebar-hover-background-color: var(--general-dark-background-color);
     --sidebar-border-color: var(--accent-color);
- 
+
     --action-area-info-background-color: var(--white-color);
     --action-area-info-text-color: var(--accent-color);
- 
+
     --edit-area-background-color: var(--white-color);
- 
+
     --tabview-horizon-color: var(--accent-color);
     --tabview-content-background-color: var(--white-color);
- 
+
     --note-background-color: var(--white-color);
     --note-text-color: var(--black-color);
     --note-border-color: var(--accent-color);
- 
+
     --footnote-block-background-color: var(--white-color);
- 
+
     --dark-styled-quote-border-color: var(--black-color), 0.5;
- 
+
     --thread-accent-color: var(--white-color);
 }
- 
+
 body, html {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
@@ -230,7 +268,7 @@ hr {
     scroll-padding-top: var(--topbar-height-on-mobile);
   }
 }
- 
+
 a:is(:hover, :active, :focus, :focus-within) {
     text-decoration: none;
 }
@@ -605,4 +643,147 @@ div.creditBottomRate {
     #top-bar div[class*=top-bar] > ul > li > ul > li:nth-child(2n):nth-last-child(2) {
         box-shadow: none;
     }
-   }
+}
+
+:root {
+    --body-width: 60rem;
+}
+
+:root {
+    --body-margin: max(calc((100% + var(--sidebar-width) - var(--body-width)) / 2), 1rem);
+}
+#content-wrap {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+}
+#main-content {
+    margin: 2rem var(--body-margin) 0 max(calc(var(--body-margin) - var(--sidebar-width)), 1rem);
+}
+#side-bar {
+    left: 0;
+    top: 0;
+    position: sticky;
+    z-index: 3;
+}
+#side-bar::before,
+#side-bar::after {
+    display: none;
+}
+@media only screen and (max-width: 1024px) {
+    :root {
+        --body-margin: max(calc((100% - var(--body-width)) / 2), 1rem);
+    }
+    #side-bar,
+    #side-bar:is(:hover,:focus-within):not(:target) {
+        left: calc(var(--sidebar-width) * -1);
+        z-index: 9;
+        position: fixed;
+    }
+    #content-wrap {
+        display: block;
+    }
+    #main-content {
+        margin: 2rem var(--body-margin);
+    }
+}
+
+:root {
+    --white-color: 35, 35, 38;
+    --black-color: 252, 252, 252;
+    --accent-color: 94, 150, 255;
+    --general-dark-text-color: var(--black-color);
+}
+div.sd-container {
+    --sd-border: var(--white-color);
+    --sd-text: var(--black-color);
+}
+
+:root {
+    --white-color: 22, 23, 33;
+    --black-color: 255, 255, 255;
+    --accent-color: 92, 222, 236;
+    --warning-text-color: var(--black-color);
+    --newpage-color: 229, 214, 157;
+    --footer-text-color: var(--accent-color);
+    --footer-background-color: 0, 0, 0, 0;
+    --license-background-color: 0, 0, 0, 0;
+}
+#container {
+    position: relative;
+    z-index: 2;
+}
+#extra-div-1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://images.pexels.com/photos/574116/pexels-photo-574116.jpeg");
+    background-size: cover;
+    opacity: 0.6;
+    z-index: 0;
+}
+#extra-div-2 {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: 20rem;
+    background: linear-gradient(to bottom, rgba(var(--white-color)), transparent);
+    z-index: 1;
+}
+#header h2 {
+    top: 0.7rem;
+}
+#top-bar {
+    border: none;
+}
+div.sd-container {
+    --sd-border: var(--white-color);
+    --sd-text: var(--black-color);
+}
+
+:root {
+    --white-color: 237, 237, 255;
+    --black-color: 0, 53, 145;
+    --accent-color: 31, 111, 247;
+    --header-background-bottom: var(--accent-color);
+    --header-background-top: var(--accent-color), 0.9;
+    --header-text-color: var(--white-color);
+    --topbar-text-color: var(--header-text-color);
+    --topbar-hover-text-color: var(--accent-color);
+    --topbar-hover-background-color: var(--white-color);
+    --header-username-color: var(--header-text-color);
+}
+#header {
+    --link-color: var(--header-text-color);
+    --hover-link-color: var(--header-text-color);
+}
+#header h2 {
+    top: 0;
+    height: 100%;
+    overflow-y: hidden;
+}
+#header h2 span {
+    position: relative;
+    top: -25%;
+    height: 150%;
+}
+#header h2 span::before {
+    opacity: 0.8;
+}
+#top-bar {
+    border-top: none;
+}
+a#account-topbutton,
+#search-top-box-form .button {
+    border: none;
+}
+@media only screen and (max-width: 1024px) {
+    :root {
+        --topbar-background-color: var(--accent-color);
+    }
+    #search-top-box-form .button {
+        background: rgba(var(--search-button-background-color));
+    }
+}
