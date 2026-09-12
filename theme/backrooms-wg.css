@@ -1,7 +1,608 @@
 @import url("https://github.backroomswiki.cn/Old_BHL/css/liminal-impact.css");
-
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 :root {
-   --logo-image: url("https://wg-backrooms-wiki-cn.wikidot.com/local--files/start/logo.png");
-   --header-title: "The Backrooms WG";
-   --header-subtitle: "杀出重围";
+    --header-font: Orbitron, Inter, "Noto Sans SC", "Noto Sans TC", Franklin Gothic Medium, Franklin Gothic, ITC Franklin Gothic, Arial, sans-serif;
+    --title-font: Lexend, Inter, "Noto Sans SC", "Noto Sans TC", Franklin Gothic Medium, Franklin Gothic, ITC Franklin Gothic, Arial, sans-serif;
+    --mono-font: "JetBrains Mono", "Noto Sans SC", "Noto Sans TC", Consolas, monaco, monospace;
+ 
+    --header-title-font-size: min(calc(1.6rem + 1.5vw), 3rem);
+    --header-subtitle-font-size: min(calc(0.6rem + 0.45vw), 1rem);
+    --header-title-font-size-on-mobile: var(--header-title-font-size);
+    --header-subtitle-font-size-on-mobile: var(--header-subtitle-font-size);
+    --sidebar-width: 16rem;
+ 
+    --logo-image: url("https://wg-cn.wikidot.com/local--files/start/WGlogo");
+    --header-title: "The Backrooms WG";
+    --header-subtitle: "杀出重围";
+ 
+    --white-color: 252, 252, 252;
+    --black-color: 35, 35, 38;
+    --accent-color: 24, 80, 187;
+ 
+    --background-color: var(--white-color);
+    --text-color: var(--black-color);
+ 
+    --light-color-1: var(--white-color);
+    --light-color-2: var(--white-color);
+    --dark-color-1: var(--accent-color);
+    --dark-color-2: var(--accent-color);
+    --dark-color-3: var(--accent-color);
+    --dark-color-4: var(--accent-color);
+ 
+    --neutral-color: 170, 170, 170;
+ 
+    --link-color: var(--accent-color);
+    --hover-link-color: var(--link-color), 0.6;
+    --visited-link-color: var(--link-color);
+ 
+    --selected-background-color: var(--general-dark-background-color);
+    --selected-text-color: var(--general-dark-text-color);
+ 
+    --scrollbar-color: var(--accent-color);
+    --scrollbar-background-color: var(--white-color);
+ 
+    --general-medium-background-color: var(--general-dark-background-color);
+    --general-medium-text-color: var(--general-dark-text-color);
+    --general-medium-border-color: var(--accent-color);
+    --general-strong-border-color: var(--accent-color);
+    --general-button-text-color: var(--accent-color);
+    --general-button-background-color: var(--white-color);
+    --general-blur: 0;
+ 
+    --header-background-bottom: var(--white-color);
+    --header-background-top: var(--white-color);
+    --header-extra-background-image: none;
+    --header-text-color: var(--black-color);
+ 
+    --topbar-text-color: var(--accent-color);
+    --topbar-hover-text-color: var(--general-dark-text-color);
+    --topbar-hover-background-color: var(--general-dark-background-color);
+    --topbar-hover-border-color: 0, 0, 0, 0;
+    --topbar-drop-text-color: var(--accent-color);
+    --topbar-drop-background-color: var(--white-color);
+    --topbar-drop-hover-text-color: var(--general-dark-text-color);
+    --topbar-drop-hover-background-color: var(--general-dark-background-color);
+    --topbar-drop-border-color: var(--accent-color);
+    --topbar-drop-border-width: 0.15rem;
+    --topbar-drop-shadow-color: 0, 0, 0, 0;
+ 
+    --account-button-text-color: var(--general-button-text-color);
+    --account-button-background-color: var(--general-button-background-color);
+    --account-button-hover-text-color: var(--general-hover-button-text-color);
+    --account-button-hover-background-color: var(--general-hover-button-background-color);
+    --account-drop-text-color: var(--accent-color);
+ 
+    --page-tag-text-color: var(--link-color);
+    --page-tag-hover-text-color: var(--hover-link-color);
+    --page-tag-background-color: 0, 0, 0, 0;
+    --page-tag-hover-background-color: 0, 0, 0, 0;
+ 
+    --page-option-background-color: 0, 0, 0, 0;
+ 
+    --license-link-color: var(--link-color);
+ 
+    --sidebar-media-background-color: 0, 0, 0, 0;
+    --sidebar-title-background-color: 0, 0, 0, 0;
+    --sidebar-title-text-color: var(--black-color);
+    --sidebar-title-shadow-color: 0, 0, 0, 0;
+    --sidebar-text-color: var(--accent-color);
+    --sidebar-hover-text-color: var(--general-dark-text-color);
+    --sidebar-hover-background-color: var(--general-dark-background-color);
+    --sidebar-border-color: var(--accent-color);
+ 
+    --action-area-info-background-color: var(--white-color);
+    --action-area-info-text-color: var(--accent-color);
+ 
+    --edit-area-background-color: var(--white-color);
+ 
+    --tabview-horizon-color: var(--accent-color);
+    --tabview-content-background-color: var(--white-color);
+ 
+    --note-background-color: var(--white-color);
+    --note-text-color: var(--black-color);
+    --note-border-color: var(--accent-color);
+ 
+    --footnote-block-background-color: var(--white-color);
+ 
+    --dark-styled-quote-border-color: var(--black-color), 0.5;
+ 
+    --thread-accent-color: var(--white-color);
 }
+ 
+body, html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+a:is(:hover, :active, :focus, :focus-within) {
+  -webkit-text-decoration: underline 0.1em;
+}
+#side-bar .menu-item a {
+  transition: background var(--general-transition-time-fast);
+}
+#file-comments {
+  padding: 0.2em 0.5em;
+}
+table.page-files .highlight {
+  background: rgba(var(--action-area-border-color))
+}
+.pager a, .pager .current, .pager .dots {
+  transition: background var(--general-transition-time-slow), color var(--general-transition-time-slow);
+}
+#action-area h1 + p + h2 ~ div[style="padding-left:3em;"] > div {
+  align-items: center;
+}
+#edit-meta-newtag-form > table {
+  display: flex;
+  align-items: center;
+}
+#edit-meta-newtag-form > table :is(tbody, tr) {
+  display: contents;
+}
+#edit-meta-newtag-form > table td {
+  display: block;
+}
+#edit-meta-newtag-form > table td:nth-child(2n) {
+  flex: 1;
+}
+#edit-meta-newtag-form > table td input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  background: rgba(var(--edit-area-textarea-background-color));
+  color: rgba(var(--edit-area-textarea-text-color));
+  padding: 0.2em 0.5em;
+  margin: 0;
+  outline: none;
+  transition: box-shadow var(--general-transition-time-slow);
+  font-weight: 500;
+}
+#edit-meta-newtag-form > table td input:focus-visible {
+  box-shadow: 2px 2px 0 rgba(var(--edit-area-textarea-border-color)), -2px 2px 0 rgba(var(--edit-area-textarea-border-color)), -2px -2px 0 rgba(var(--edit-area-textarea-border-color)), 2px -2px 0 rgba(var(--edit-area-textarea-border-color));
+}
+#edit-meta-newtag-form > div {
+  margin: 1rem 0;
+  padding: 0 !important;
+  display: flex;
+  grid-gap: 1rem;
+}
+hr {
+  background: transparent;
+}
+[class|=colmod-link] {
+  margin: 1rem 0;
+}
+.yui-navset .yui-nav li a,
+.yui-navset .yui-nav li.selected a {
+  transition: color var(--general-transition-time-slow);
+}
+.hl-default,
+.hl-code,
+.hl-brackets,
+.hl-identifier {
+  color: inherit;
+}
+#toc #toc-action-bar {
+  top: 0.25rem;
+}
+:where(ol ul, ul ul) {
+  list-style-type: circle;
+}
+.join-box a {
+  color: rgba(var(--general-button-text-color));
+  background: rgba(var(--general-button-background-color));
+}
+.join-box a:is(:hover, :active, :focus, :focus-within) {
+  color: rgba(var(--general-hover-button-text-color));
+  background: rgba(var(--general-hover-button-background-color));
+}
+.forum-thread-box .description-block {
+  padding: 0.5em 1em;
+}
+.thread-container .post .long {
+  padding: 0.5em;
+}
+#page-content > div.forum-thread-box > div.options,
+.post-container > .post > div.long > div.options {
+  display: flex;
+  justify-content: flex-end;
+}
+.signature {
+  display: none;
+}
+.notepaper {
+  max-width: 100%;
+}
+.bettercollap .collapsible-block-unfolded-link,
+.bettercollap .collapsible-block-folded {
+  margin: 0;
+}
+@media (pointer: coarse) {
+  #login-status #account-options:hover,
+  #login-status #account-topbutton:hover + #account-options {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  html {
+    scroll-padding-top: var(--topbar-height-on-mobile);
+  }
+}
+ 
+a:is(:hover, :active, :focus, :focus-within) {
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+}
+a#account-topbutton,
+#search-top-box-form .button,
+#edit-page-title,
+#edit-page-textarea,
+#edit-page-comments,
+#new-post-div input.text,
+#new-post-div textarea#np-text,
+#lock-info,
+.change-textarea-size a,
+div.buttons input,
+input.button,
+button,
+file,
+a.button,
+table.form td input,
+.new-page-box form input.text,
+#file-comments,
+.page-options-bottom a,
+.owindow .button-bar > a:not([onclick*=cleanAll]),
+.owindow div[style*=margin-top] a,
+.join-box a,
+.button-collap .collapsible-block-link,
+.button-collap [class|=colmod-link] a {
+    border: solid 0.15rem rgba(var(--accent-color));
+    box-sizing: border-box;
+}
+table.wiki-content-table th,
+.darkblock,
+.dark-styled-quote {
+    --page-title-text-color: var(--general-dark-text-color);
+    --page-title-border-color: var(--general-dark-text-color);
+    --hr-color: var(--general-dark-text-color);
+}
+.warnblock {
+    --accent-color: var(--warning-text-color);
+    --page-title-text-color: var(--warning-text-color);
+    --page-title-border-color: var(--warning-text-color);
+    --hr-color: var(--accent-color);
+}
+#header h1 a span {
+    padding-top: 1rem;
+    text-shadow: none;
+    line-height: 1.2;
+}
+#header h1 a span::after {
+    letter-spacing: 0.25em;
+}
+#header h2 {
+    top: 0.5rem;
+}
+#top-bar {
+    border-top: 0.15rem rgba(var(--accent-color)) solid;
+    border-bottom: 0.15rem rgba(var(--accent-color)) solid;
+}
+#top-bar div[class*=top-bar] > ul > li > ul {
+    border: solid var(--topbar-drop-border-width) rgba(var(--topbar-drop-border-color));
+}
+#top-bar div[class*=top-bar] > ul > li > ul > li,
+#top-bar div[class*=top-bar] > ul > li > ul > li > ul > li {
+    border: none;
+}
+#login-status > a > strong {
+    color: rgba(var(--warning-color));
+}
+a#my-account {
+    color: rgba(var(--link-color));
+}
+a#my-account:is(:hover, :active, :focus, :focus-within) {
+    color: rgba(var(--hover-link-color));
+}
+#page-title,
+.meta-title {
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    padding: 0;
+}
+#page-title::before,
+#page-title::after,
+.meta-title::before,
+.meta-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 0.15rem;
+    background-color: rgba(var(--accent-color));
+}
+#page-title::before,
+.meta-title::before {
+    margin-right: 1rem;
+}
+#page-title::after,
+.meta-title::after {
+    margin-left: 1rem;
+}
+.page-tags::before {
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+.page-tags span {
+    grid-gap: 0.8rem;
+    padding-left: 0.3rem;
+}
+.page-tags span a {
+    transition: color 0.15s;
+    padding: 0;
+}
+.page-watch-options a:hover {
+    text-decoration: none;
+}
+div[id*=page-options-bottom] > a {
+    border: none;
+}
+#side-bar .side-block.media {
+    border-bottom: solid 0.1333333333rem rgba(var(--sidebar-border-color));
+}
+#side-bar .heading,
+#side-bar .collapsible-block-unfolded-link a,
+#side-bar .collapsible-block-folded a {
+    justify-content: space-between;
+    padding: 0 1em;
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+}
+#side-bar a.collapsible-block-link::before {
+    display: none;
+}
+#side-bar a.collapsible-block-link::after {
+    color: rgba(var(--accent-color));
+}
+#side-bar .menu-item a {
+    border-left: none;
+}
+.edit-help-34 {
+    font-size: 0.8rem;
+}
+.edit-help-34 a {
+    margin: 0;
+    padding: 0;
+    color: rgba(var(--link-color));
+    background: transparent;
+    transition: color 0.15s;
+}
+.edit-help-34 a:is(:hover, :active, :focus, :focus-within) {
+    color: rgba(var(--hover-link-color));
+    background: transparent;
+}
+#lock-info {
+    padding: 1em;
+}
+a.action-area-close,
+#view-diff-div > p > a {
+    background: transparent;
+}
+.pager a {
+    transition: color 0.15s;
+}
+.pager a:is(:hover, :active, :focus, :focus-within) {
+    color: rgba(var(--accent-color));
+    background: transparent;
+}
+#action-area > h1 + h2 + ul,
+#action-area > h1 + h2 ~ h2 ~ ul {
+    margin: 0;
+}
+#action-area > h1 + h2 + ul li a,
+#action-area > h1 + h2 ~ h2 ~ ul li a {
+    color: rgba(var(--link-color));
+}
+.page-source {
+    border: rgba(var(--accent-color)) dashed 0.15rem;
+}
+.yui-navset .yui-nav {
+    box-shadow: 0 0.15rem 0 rgba(var(--tabview-horizon-color));
+}
+.hl-main * {
+    color: inherit;
+}
+.hl-comment,
+.hl-var,
+.hl-number {
+    color: rgba(var(--accept-color));
+}
+.hl-quotes,
+.hl-string,
+.hl-inlinedoc,
+.hl-url,
+.hl-builtin,
+.hl-reserved,
+.hl-special,
+.hl-inlinetags {
+    color: rgba(var(--accent-color));
+}
+:where(ol ul, ul ul) {
+    list-style-type: circle;
+}
+div.wiki-note {
+    font-weight: inherit;
+    border: rgba(var(--note-border-color)) dashed 0.15rem;
+    padding: 0.5rem 1rem;
+}
+.footnotes-footer,
+.bibitems {
+    border: rgba(var(--footnote-block-border-color)) solid 0.15rem;
+    border-left-width: 0.4rem;
+}
+.owindow .content > img + h1 + table,
+.owindow .content > img + h1 + table td {
+    border-color: rgba(var(--accent-color), 0.18);
+}
+div.creditBottomRate {
+    border-color: rgba(var(--accent-color));
+}
+.lightblock {
+    border: rgba(var(--accent-color)) solid 0.15rem;
+}
+.styled-quote {
+    border: rgba(var(--styled-quote-border-color)) solid 0.15rem;
+    border-left-width: 0.6rem;
+}
+.keycap {
+    box-shadow: 0 0.125em 0 0.05em rgba(var(--accent-color));
+}
+.licensebox a.collapsible-block-link {
+    opacity: 1;
+    color: rgba(var(--link-color));
+    transition: color 0.15s;
+}
+.licensebox a.collapsible-block-link:is(:hover, :active, :focus, :focus-within) {
+    color: rgba(var(--hover-link-color));
+}
+.sd-container {
+    --sd-border: var(--black-color);
+    --sd-symbol: var(--white-color);
+    --sd-bullets: var(--black-color);
+    --sd-text: var(--white-color);
+}
+.sd-container .top-box::before,
+.sd-container .header-diamond .diamond-pattern {
+    display: none;
+}
+.warnblock {
+    background: rgba(var(--warning-color));
+    color: rgba(var(--warning-text-color));
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+}
+.titleblock {
+    background: rgba(var(--popup-background-color));
+    color: rgba(var(--popup-text-color));
+    border: rgba(var(--popup-border-color)) solid 0.15rem;
+    margin: 1rem 0;
+    padding: 0 1rem 0.5rem;
+}
+.titleblock > h1:first-child {
+    background: rgba(var(--popup-title-background-color));
+    color: rgba(var(--popup-title-text-color));
+    padding: 0.5rem 1rem;
+    margin: 0 -1rem 0.5rem;
+    font-size: 1.25rem;
+}
+.accent {
+    background: rgba(var(--general-dark-background-color));
+    color: rgba(var(--general-dark-text-color));
+}
+.insert {
+    background: rgba(var(--accept-color));
+    color: rgba(var(--accept-text-color));
+}
+.delete {
+    background: rgba(var(--warning-color));
+    color: rgba(var(--warning-text-color));
+}
+.classic-title,
+.new-title {
+    color: rgba(var(--page-title-text-color));
+    font-weight: 700;
+    margin: 1rem 0;
+    font-size: 2rem;
+    font-family: var(--title-font);
+}
+.classic-title p,
+.new-title p {
+    display: contents;
+}
+.classic-title {
+    padding: 0 0 0.25rem;
+    border-bottom: solid 0.15rem rgba(var(--page-title-border-color));
+}
+.new-title {
+    display: flex;
+    align-items: center;
+}
+.new-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 0.15rem;
+    background-color: rgba(var(--accent-color));
+    margin-left: 1rem;
+}
+.button-collap .collapsible-block-link,
+.button-collap [class|=colmod-link] a {
+    display: inline-block;
+    padding: 0.5em;
+    line-height: 1;
+    color: rgba(var(--general-button-text-color));
+    background: rgba(var(--general-button-background-color));
+    transition: background var(--general-transition-time-fast);
+}
+.button-collap .collapsible-block-link:is(:hover, :active, :focus, :focus-within),
+.button-collap [class|=colmod-link] a:is(:hover, :active, :focus, :focus-within) {
+    color: rgba(var(--general-hover-button-text-color));
+    background: rgba(var(--general-hover-button-background-color));
+}
+.modal-collap li.unfolded > .colmod-link-end a {
+    display: none;
+}
+.modal-collap li.unfolded > .colmod-link-top a:first-child {
+    display: inline;
+}
+.modal-collap li.unfolded > .colmod-link-top a + a,
+.modal-collap li.unfolded > .colmod-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.modal-collap li.unfolded > .colmod-link-top a + a {
+    font-size: 0;
+    backdrop-filter: blur(var(--general-blur));
+    background: rgba(var(--popup-fader-color));
+    border: none;
+}
+.modal-collap li.unfolded > .colmod-content {
+    pointer-events: none;
+}
+.modal-collap div.modalbox > div:last-child {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    max-height: 47.5vh;
+    overflow-y: auto;
+    height: auto;
+    min-height: 5rem;
+    background: transparent;
+}
+.modal-collap div.modalbox > div:last-child h2 {
+    margin: 0.35em 0;
+    font-size: 1.75em;
+    color: inherit;
+}
+.modal-collap.button-collap li.unfolded > .colmod-link-top a:first-child {
+    display: inline-block;
+}
+.warning {
+    --popup-title-background-color: var(--warning-color);
+    --popup-title-text-color: var(--warning-text-color);
+    --popup-border-color: var(--warning-color);
+}
+@media only screen and (max-width: 1024px) {
+    #search-top-box-form .button {
+        background: rgba(var(--search-button-text-color));
+    }
+    #top-bar div[class*=top-bar] > ul > li > ul > li:nth-child(2n):nth-last-child(2) {
+        box-shadow: none;
+    }
+   }
